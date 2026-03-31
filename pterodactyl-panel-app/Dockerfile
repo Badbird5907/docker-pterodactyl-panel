@@ -40,5 +40,5 @@ COPY --from=install_dependencies /root/wait-for /root/wait-for
 COPY cronfile /root/cronfile
 RUN crontab /root/cronfile
 RUN chmod -R 755 /var/www/pterodactyl/storage/* /var/www/pterodactyl/bootstrap/cache/
-EXPOSE 80
-ENTRYPOINT ["/bin/sh", "-c", "/root/wait-for database:3306 -t 30 && cp -fp /var/www/html/.env /var/www/pterodactyl/ || : && cp -rfpT /var/www/pterodactyl /var/www/html || : && yes no | php artisan key:generate && php artisan migrate --force && php artisan db:seed --force && crond && chown -R www-data:www-data * || : && php-fpm"]
+EXPOSE 9000
+ENTRYPOINT ["/bin/sh", "-c", "/root/wait-for database:3306 -t 30 && cp -fp /var/www/html/.env /var/www/pterodactyl/ || : && cp -rfpT /var/www/pterodactyl /var/www/html || : && crond && chown -R www-data:www-data /var/www/html || : && exec php-fpm -F"]
