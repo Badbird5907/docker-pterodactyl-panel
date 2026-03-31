@@ -1,5 +1,5 @@
 FROM alpine AS download
-ARG pterodactyl_panel_version=v1.11.11
+ARG pterodactyl_panel_version=v1.12.2
 RUN apk add --no-cache \
         curl \
         tar
