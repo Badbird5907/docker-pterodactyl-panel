@@ -1,5 +1,5 @@
 FROM alpine AS download
-ARG pterodactyl_panel_version=v1.12.2
+ARG pterodactyl_panel_version=v1.15.2
 RUN apk add --no-cache \
         curl \
         tar
@@ -7,7 +7,7 @@ RUN mkdir -p pterodactyl
 RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/${pterodactyl_panel_version}/panel.tar.gz
 RUN tar -xzvf panel.tar.gz -C /pterodactyl
 
-FROM php:8.2-fpm-alpine AS base_php
+FROM php:8.3.36-fpm-alpine AS base_php
 RUN apk add --no-cache \
         freetype-dev \
         libjpeg-turbo-dev \
