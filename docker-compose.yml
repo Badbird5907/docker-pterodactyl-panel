@@ -14,7 +14,7 @@ services:
     image: redis
     restart: always
   php-fpm:
-    image: badbird5907/pterodactyl-panel:v1.12.2-fixed1
+    image: badbird5907/pterodactyl-panel:v1.15.2
     restart: always
     depends_on:
       - database
@@ -33,7 +33,7 @@ services:
       REDIS_HOST: cache
       REDIS_PORT: 6379
   panel-upgrade:
-    image: badbird5907/pterodactyl-panel:v1.12.2-fixed1
+    image: badbird5907/pterodactyl-panel:v1.15.2
     profiles:
       - upgrade
     depends_on:
